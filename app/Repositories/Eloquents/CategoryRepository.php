@@ -1,8 +1,8 @@
 <?php
-namespace App\Repositories;
+namespace App\Repositories\Eloquents;
 
 use App\Models\Category;
-use App\Repositories\Interfaces\CategoryRepositoryInterface;
+use App\Repositories\Contructs\CategoryRepositoryInterface;
 use Override;
 
 class CategoryRepository implements CategoryRepositoryInterface

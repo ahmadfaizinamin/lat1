@@ -1,8 +1,8 @@
 <?php
-namespace App\Repositories;
+namespace App\Repositories\Eloquents;
 
 use App\Models\Product;
-use App\Repositories\Interfaces\ProductRepositoryInterface;
+use App\Repositories\Contructs\ProductRepositoryInterface;
 use Override;
 
 class ProductRepository implements ProductRepositoryInterface
