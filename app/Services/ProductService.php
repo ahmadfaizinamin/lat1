@@ -1,7 +1,7 @@
 <?php
 namespace App\Services;
 
-use App\Repositories\Contructs\ProductRepositoryInterface;
+use App\Repositories\Contracts\ProductRepositoryInterface;
 
 class ProductService
 {

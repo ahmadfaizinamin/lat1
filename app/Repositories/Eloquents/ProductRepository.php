@@ -2,7 +2,7 @@
 namespace App\Repositories\Eloquents;
 
 use App\Models\Product;
-use App\Repositories\Contructs\ProductRepositoryInterface;
+use App\Repositories\Contracts\ProductRepositoryInterface;
 use Override;
 
 class ProductRepository implements ProductRepositoryInterface
@@ -10,7 +10,7 @@ class ProductRepository implements ProductRepositoryInterface
      #[Override]
     public function getAll()
     {
-        return Product::all();
+        return Product::with('category')->get();
     }
 
     #[Override]

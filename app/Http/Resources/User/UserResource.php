@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Resources\Auth;
+namespace App\Http\Resources\User;
 
-use App\Http\Resources\UserResource;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class AuthResponseResource extends JsonResource
+class UserResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,9 +15,9 @@ class AuthResponseResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'user' => new UserResource($this['user']),
-            'token' => $this['token'],
-            'expires_in' => $this['expires_in']
+            'name' => $this->name,
+            'email' => $this->email,
+            'created_at' => $this->created_at->format('Y-m-d H:i:s')
         ];
     }
 }

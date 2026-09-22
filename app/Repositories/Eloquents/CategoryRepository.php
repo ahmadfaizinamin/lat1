@@ -2,7 +2,7 @@
 namespace App\Repositories\Eloquents;
 
 use App\Models\Category;
-use App\Repositories\Contructs\CategoryRepositoryInterface;
+use App\Repositories\Contracts\CategoryRepositoryInterface;
 use Override;
 
 class CategoryRepository implements CategoryRepositoryInterface

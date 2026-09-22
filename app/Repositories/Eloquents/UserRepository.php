@@ -2,7 +2,7 @@
 namespace App\Repositories\Eloquents;
 
 use App\Models\User;
-use App\Repositories\Contructs\UserRepositoryInterfaces;
+use App\Repositories\Contracts\UserRepositoryInterfaces;
 
 class UserRepository implements UserRepositoryInterfaces
 {

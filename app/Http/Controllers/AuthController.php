@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Auth\LoginRequest;
 use App\Http\Requests\Auth\RegisterRequest;
-use App\Http\Resources\Auth\AuthResponseResource;
+use App\Http\Resources\AuthResponseResource;
 use App\Services\UserService;
 use Exception;
 use Illuminate\Http\Request;

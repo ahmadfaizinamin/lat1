@@ -1,7 +1,7 @@
 <?php
 namespace App\Services;
 
-use App\Repositories\Contructs\UserRepositoryInterfaces;
+use App\Repositories\Contracts\UserRepositoryInterfaces;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use PHPOpenSourceSaver\JWTAuth\Facades\JWTAuth;

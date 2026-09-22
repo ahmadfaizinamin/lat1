@@ -2,21 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Category\StoreRequest;
-use App\Http\Requests\Category\UpdateRequest;
-use App\Http\Resources\CategoryResource;
-use App\Services\CategoryService;
+use App\Http\Requests\Product\StoreRequest;
+use App\Http\Requests\Product\UpdateRequest;
+use App\Http\Resources\ProductResource;
+use App\Services\ProductService;
 use Exception;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class ProductController extends Controller
 {
-    protected $categoryService;
+    protected $productService;
 
-    public function __construct(CategoryService $categoryService)
+    public function __construct(ProductService $productService)
     {
-        $this->categoryService = $categoryService;
+        $this->productService = $productService;
     }
 
     /**
@@ -25,16 +25,16 @@ class CategoryController extends Controller
     public function index()
     {
         try {
-            $data = $this->categoryService->getAllCategory();
+            $data = $this->productService->getAllProduct();
 
             return response()->json([
                 'status' => 'success',
-                'data' => CategoryResource::collection($data)
+                'data' => ProductResource::collection($data)
             ], 200);
         } catch (Exception $e) {
             return response()->json([
                 'status' => 'error',
-                'message' => 'gagal ambil category, '. $e->getMessage()
+                'message' => 'gagal ambil produk, '. $e->getMessage()
             ], 500);
         }
     }
@@ -46,16 +46,16 @@ class CategoryController extends Controller
     {
         try {
             $validasi = $request->validated();
-            $data = $this->categoryService->createCategory($validasi);
+            $data = $this->productService->createProduct($validasi);
 
             return response()->json([
                 'status' => 'success',
-                'data' => new CategoryResource($data)
+                'data' => new ProductResource($data)
             ], 201);
         } catch (Exception $e) {
             return response()->json([
                 'status' => 'error',
-                'message' => 'gagal buat category, '. $e->getMessage()
+                'message' => 'gagal buat produk, '. $e->getMessage()
             ], 400);
         }
     }
@@ -66,21 +66,21 @@ class CategoryController extends Controller
     public function show(string $id)
     {
         try {
-            $data = $this->categoryService->getByIdCategory($id);
+            $data = $this->productService->getByIdProduct($id);
 
             return response()->json([
                 'status' => 'success',
-                'data' => new CategoryResource($data)
+                'data' => new ProductResource($data)
             ], 200);
         } catch (ModelNotFoundException $e) {
             return response()->json([
                 'status' => 'error',
-                'message' => 'category tidak ditemukan'
+                'message' => 'produk tidak ditemukan'
             ], 404);
         } catch (Exception $e) {
             return response()->json([
                 'status' => 'error',
-                'message' => 'gagal ambil category, '. $e->getMessage()
+                'message' => 'gagal ambil produk, '. $e->getMessage()
             ], 500);
         }
     }
@@ -92,21 +92,21 @@ class CategoryController extends Controller
     {
         try {
             $validasi = $request->validated();
-            $data = $this->categoryService->updateCategory($id, $validasi);
+            $data = $this->productService->updateProduct($id, $validasi);
 
             return response()->json([
                 'status' => 'success',
-                'data' => new CategoryResource($data)
+                'data' => new ProductResource($data)
             ], 200);
         } catch (ModelNotFoundException $e) {
             return response()->json([
                 'status' => 'error',
-                'message' => 'category tidak ditemukan'
+                'message' => 'produk tidak ditemukan'
             ], 404);
         } catch (Exception $e) {
             return response()->json([
                 'status' => 'error',
-                'message' => 'gagal ambil category, '. $e->getMessage()
+                'message' => 'gagal ambil produk, '. $e->getMessage()
             ], 500);
         }
     }
@@ -117,22 +117,22 @@ class CategoryController extends Controller
     public function destroy(string $id)
     {
         try {
-            $data = $this->categoryService->getByIdCategory($id);
-            $this->categoryService->deleteCategory($id);
+            $data = $this->productService->getByIdProduct($id);
+            $this->productService->deleteProduct($id);
 
             return response()->json([
                 'status' => 'success',
-                'message' => "menghapus category {$data['name']}"
+                'message' => "menghapus produk {$data['name']}"
             ], 200);
         } catch (ModelNotFoundException $e) {
             return response()->json([
                 'status' => 'error',
-                'message' => 'category tidak ditemukan'
+                'message' => 'produk tidak ditemukan'
             ], 404);
         } catch (Exception $e) {
             return response()->json([
                 'status' => 'error',
-                'message' => 'gagal ambil category, '. $e->getMessage()
+                'message' => 'gagal ambil produk, '. $e->getMessage()
             ], 500);
         }
     }
